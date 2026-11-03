@@ -1,0 +1,48 @@
+﻿@import 'tailwindcss';
+
+@theme {
+  --color-cream: #f6efe2;
+  --color-bark: #2b2118;
+  --color-terra: #b5532f;
+  --color-moss: #7a8b57;
+  --color-forest: #2f4a35;
+  --color-sand: #e2cfa8;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Playfair Display', ui-serif, Georgia, serif;
+  --animate-marquee: marquee 38s linear infinite;
+  --animate-float: float 9s ease-in-out infinite;
+  --animate-ring: ring 2.4s ease-out infinite;
+  --animate-shine: shine 6s linear infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(30px, -40px, 0) scale(1.12); }
+}
+@keyframes ring {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+@keyframes marquee {
+  to { transform: translate3d(-50%, 0, 0); }
+}
+@media (hover: hover) and (pointer: fine) {
+  html.has-cursor, html.has-cursor * { cursor: none !important; }
+}
+/* 4 copies per column: shifting by 25% loops seamlessly */
+.vmarquee { animation: vscroll var(--dur, 36s) linear infinite var(--dir, normal); }
+@keyframes vscroll {
+  to { transform: translate3d(0, -25%, 0); }
+}
+.bob { animation: bob 5s ease-in-out infinite; }
+@keyframes bob { 50% { transform: translateY(-10px); } }
+@keyframes shine {
+  to { background-position: 200% center; }
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--color-cream); color: var(--color-bark); font-family: var(--font-sans); overflow-x: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
